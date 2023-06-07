@@ -5,6 +5,11 @@
 * Database : PostgreSQL 13.11
 * Library : Spring Framework, Hibernate ORM, Joda Time, Servlet API 2.5, Encryptable Properties
 * Dependency Management : Maven
+* Front End : Bootstrap 2.3.2 Framework
+
+### Output:
+
+<img src="WebContent/assets/img/output-hero-list.png" alt="hero-list" width="500"/>
 
 Best Regards,<br/>
 Thank you.
