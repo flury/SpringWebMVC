@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Learning Web MVC | Hero List</title>
+    <title>Learning Web MVC | Hero Create</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -46,8 +46,8 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="<c:url value='/index' />">Home</a></li>
-              <li class="active"><a href="<c:url value='/hero-list' />">Hero List</a></li>
-              <li><a href="<c:url value='/hero-create' />">Hero Create</a></li>
+              <li><a href="<c:url value='/hero-list' />">Hero List</a></li>
+              <li class="active"><a href="<c:url value='/hero-create' />">Hero Create</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
@@ -58,45 +58,78 @@
 
     <div class="container">
 
-		<h1>Hero List</h1>
+		<h1>Create New Hero</h1>
 		<p>This list shows all heroes as they are available in both servers, along with their assigned roles, specialties, laning recommendations, release years, and purchase costs, arranged in the alphabetical order of their names. Heroes who haven't yet received a purchase price or laning recommendations are those, who are still not available in the Official Server or during test in Advanced Server.</p>
 
-		<p>
-			<a class="btn btn-primary" href="<c:url value='/hero-create' />">Create New</a>
-			<a class="btn btn-info" href="<c:url value='/hero-export-excel' />">Export Excel</a>
-		</p>
+		<c:if test="${not empty validationMessage}">
+			<div class="alert alert-error">Error Message: ${validationMessage}</div>
+		</c:if>
 		
-		<table class="table table-bordered">
-			<tr>
-				<th>Hero</th>
-				<th>Name</th>
-				<th>Hero Code</th>
-				<th>Roles</th>
-				<th>Specialities</th>
-				<th>Laning</th>
-				<th>Release Year</th>
-				<th>Price</th>
-				<th>Action</th>
-			</tr>
-			<c:forEach items="${listTableHero}" var="recs" varStatus="index">
-			<tr>
-				<td><img width="40%" src="<c:url value='/assets/img/mobile-legend/Hero${recs.heroCode}1-icon.webp' />" class="img-circle" alt="icon-hero"></td>
-				<td>${recs.heroName}</td>
-				<td>${recs.heroCode}</td>
-				<td><img width="20%" src="<c:url value='/assets/img/mobile-legend/${recs.heroRole}_Icon.webp' />" class="img-circle" alt="icon-hero">${recs.heroRole}</td>
-				<td>${recs.heroSpecialities}</td>
-				<td>${recs.heroLaning}</td>
-				<td>${recs.heroReleaseYear}</td>
-				<td><img width="10%" src="<c:url value='/assets/img/mobile-legend/Battle_Points.webp' />" class="img-circle" alt="icon-hero">: ${recs.heroBattlePoint} | <img width="10%" src="<c:url value='/assets/img/mobile-legend/Diamond.webp' />" class="img-circle" alt="icon-hero">: ${recs.heroDiamond}</td>
-				
-				<td>
-					<a class="btn btn-primary" href="<c:url value='/hero-edit/${recs.heroId}' />">Edit</a>
-					<a class="btn btn-danger" href="<c:url value='/hero-delete/${recs.heroId}' />">Delete</a>
-				</td>
-				
-			</tr>
-			</c:forEach>
-		</table>
+		<form class="form-horizontal" action="<c:url value='/hero-save-todb' />" method="post">
+		  
+		  <div class="control-group">
+		    <label class="control-label">Hero Code</label>
+		    <div class="controls">
+		      <input type="text" name="heroCode" placeholder="Hero Code" value="0">
+		    </div>
+		  </div>
+		  
+		  <div class="control-group">
+		    <label class="control-label">Hero Name</label>
+		    <div class="controls">
+		      <input type="text" name="heroName" placeholder="Hero Name">
+		    </div>
+		  </div>
+		  
+		  <div class="control-group">
+		    <label class="control-label">Role</label>
+		    <div class="controls">
+		      <input type="text" name="heroRole" placeholder="Role">
+		    </div>
+		  </div>
+		  
+		  <div class="control-group">
+		    <label class="control-label">Specialities</label>
+		    <div class="controls">
+		      <input type="text" name="heroSpecialities" placeholder="Specialities">
+		    </div>
+		  </div>
+		  
+		  <div class="control-group">
+		    <label class="control-label">Laning</label>
+		    <div class="controls">
+		      <input type="text" name="heroLaning" placeholder="Laning">
+		    </div>
+		  </div>
+		  
+		  <div class="control-group">
+		    <label class="control-label">Release Year</label>
+		    <div class="controls">
+		      <input type="text" name="heroReleaseYear" placeholder="Release Year">
+		    </div>
+		  </div>
+		  
+		  <div class="control-group">
+		    <label class="control-label">Battle Point</label>
+		    <div class="controls">
+		      <input type="text" name="heroBattlePoint" placeholder="Battle Point" value="0">
+		    </div>
+		  </div>
+		  
+		  <div class="control-group">
+		    <label class="control-label">Diamond</label>
+		    <div class="controls">
+		      <input type="text" name="heroDiamond" placeholder="Diamond" value="0">
+		    </div>
+		  </div>
+		  
+		  <div class="control-group">
+		    <div class="controls">
+		      <button type="submit" class="btn">Create New</button>
+		    </div>
+		  </div>
+		  
+		</form>
 
     </div> <!-- /container -->
 

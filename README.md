@@ -9,7 +9,24 @@
 
 ### Output:
 
+* List View 
 <img src="WebContent/assets/img/output-hero-list.png" alt="hero-list" width="500"/>
+
+* Export to excel
+<img src="WebContent/assets/img/output-hero-export-excel.png" alt="hero-list" width="500"/>
+
+* Create
+<img src="WebContent/assets/img/output-hero-create.png" alt="hero-list" width="500"/>
+
+* Create validation
+<img src="WebContent/assets/img/output-hero-create-validation.png" alt="hero-list" width="500"/>
+
+* Edit
+<img src="WebContent/assets/img/output-hero-edit.png" alt="hero-list" width="500"/>
+
+* Delete
+<img src="WebContent/assets/img/output-hero-delete.png" alt="hero-list" width="500"/>
+
 
 Best Regards,<br/>
 Thank you.
